@@ -1,0 +1,7 @@
+node_modules
+lib
+uploads
+.nyc_output
+coverage
+.git
+.vscode

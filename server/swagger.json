@@ -1,0 +1,323 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "calenduck api",
+    "description": "calenduck api documentation",
+    "version": "1.0.0"
+  },
+  "host": "localhost:5000",
+  "basePath": "/",
+  "paths": {
+    "/auth": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "email": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "201": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "access": {
+                  "type": "string"
+                },
+                "refresh": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "404": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "email": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "201": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "access": {
+                  "type": "string"
+                },
+                "refresh": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "409": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "bookmark": {
+                  "type": "number"
+                },
+                "createdAt": {
+                  "type": "number"
+                },
+                "updatedAt": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "404": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "email": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "bookmark": {
+                "type": "number"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "400": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "404": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true
+        }],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "404": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}/contents": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [{
+          "name": "from",
+          "in": "query",
+          "required": true
+        },
+        {
+          "name": "to",
+          "in": "query",
+          "required": true
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true
+        }],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          },
+          "500": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}/images": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [{
+          "name": "from",
+          "in": "query",
+          "required": true
+        },
+        {
+          "name": "to",
+          "in": "query",
+          "required": true
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true
+        }],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          },
+          "500": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
