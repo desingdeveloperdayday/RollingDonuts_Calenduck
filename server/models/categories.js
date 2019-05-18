@@ -8,6 +8,9 @@ export default (sequelize, DataTypes) => sequelize.define('categories', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  createdAt: DataTypes.DATE,
+  updatedAt: DataTypes.DATE,
+  deletedAt: DataTypes.DATE,
 }, {
   modelName: 'categories',
   timestamps: false,

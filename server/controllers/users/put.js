@@ -1,13 +1,19 @@
 import { Users } from '../../models';
 
-export default async (data) => {
-  const { id, email, password, bookmark } = data;
+export default async (params) => {
+  const {
+    id, email, password, bookmark, subscriptionId,
+  } = params;
 
-  const user = await Users.findOne({ where: { id } });
+  const user = await Users.findOne({ where: { id, deletedAt: null } });
 
   if (!user) return { code: 404, data: 'not found' };
 
-  const values = { email, password, bookmark, updatedAt: new Date() };
+  if ((user.bookmark + bookmark) < 0) return { code: 400, data: 'invalid bookmark' };
+
+  const values = {
+    email, password, bookmark, subscriptionId, updatedAt: new Date(),
+  };
 
   const result = await Users.update(values, { where: { id } });
 

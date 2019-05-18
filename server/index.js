@@ -4,6 +4,7 @@ import cors from 'cors';
 import compression from 'compression';
 import routes from './routes';
 import { sequelize } from './models';
+import seeds from './seeders';
 
 const { server, database } = require('./config').default;
 
@@ -32,6 +33,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/', routes);
 app.use('/*', (_, response) => response.status(404).end());
 
-sequelize.sync({ force: database.sync }).catch(() => process.exit(1));
+sequelize.sync({ force: database.sync }).then(() => seeds()).catch(() => process.exit(1));
 
 app.listen(server.port);

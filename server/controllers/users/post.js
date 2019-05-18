@@ -4,14 +4,13 @@ import { Users } from '../../models';
 
 const config = require('../../config').default.auth;
 
-export default async (data) => {
-  const { email, kakao, name } = data;
+export default async (params) => {
+  const { email, kakao, name } = params;
 
   const duplicated = await Users.findAll({
     where: {
-      [Op.or]: {
-        email, name, kakao: kakao || 0, deletedAt: null,
-      },
+      [Op.or]: { email, name, kakao: kakao || 0 },
+      deletedAt: null,
     },
   });
 
@@ -19,7 +18,7 @@ export default async (data) => {
     return { code: 409, data: 'already exists' };
   }
 
-  const created = await Users.create({ ...data, createdAt: new Date() });
+  const created = await Users.create({ ...params, createdAt: new Date() });
 
   const payload = { id: created.id, email: created.email };
 

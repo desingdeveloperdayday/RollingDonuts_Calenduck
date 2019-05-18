@@ -40,14 +40,14 @@ export default (sequelize, DataTypes) => sequelize.define('users', {
 }, {
   hooks: {
     beforeCreate: (user) => {
-      if (user.password !== '') {
-        Object.assign(user, { password: crypto.createHash('sha512').update(user.password).digest('hex') });
-      }
+      Object.assign(user, {
+        password: crypto.createHash('sha512').update(user.password).digest('hex'),
+      });
     },
     beforeBulkUpdate: (user) => {
-      if (user.attributes.password !== '') {
-        Object.assign(user.attributes, { password: crypto.createHash('sha512').update(user.attributes.password).digest('hex') });
-      }
+      Object.assign(user.attributes, {
+        password: crypto.createHash('sha512').update(user.attributes.password).digest('hex'),
+      });
     },
   },
   modelName: 'users',

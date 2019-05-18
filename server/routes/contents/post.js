@@ -3,14 +3,16 @@ import { contents } from '../../controllers';
 export default async (request, response) => {
   try {
     const { id } = request.user;
-    const { title, text, category } = request.body;
+    const {
+      title, text, categoryId,
+    } = request.body;
 
     if (!title || typeof title !== 'string' || title.length > 30) {
-      return response.status(400).send('title is missing').end();
+      return response.status(400).send('title is missing');
     }
 
-    if (!category || (category * 1) < 0) {
-      return response.status(400).send('invalid category').end();
+    if (!categoryId || Number.isNaN(categoryId) || categoryId < 1) {
+      return response.status(400).send('invalid categoryId');
     }
 
     if (typeof text !== 'string' || text.length > 100) {
@@ -19,8 +21,12 @@ export default async (request, response) => {
 
     const { code, data } = await contents.post({ id, ...request.body, files: request.files });
 
-    return response.status(code).send(data).end();
+    if (!code || !data) {
+      return response.status(500).send('internal server error');
+    }
+
+    return response.status(code).send(data);
   } catch (error) {
-    return response.status(500).send('internal server error').end();
+    return response.status(500).send('internal server error');
   }
 };

@@ -60,7 +60,7 @@
     "should": "^13.2.3"
   },
   "scripts": {
-    "lint": "eslint --fix index.js models routes",
+    "lint": "eslint --fix index.js models routes controllers seeders",
     "trans": "./transpile.sh",
     "start": "nodemon --exec babel-node -- ./index.js",
     "test": "cross-env NODE_ENV=test nyc mocha test/*.spec.js"

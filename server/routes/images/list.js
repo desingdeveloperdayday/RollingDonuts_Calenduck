@@ -1,11 +1,9 @@
-import { contents } from '../../controllers';
+import { images } from '../../controllers';
 
 export default async (request, response) => {
   try {
     const { id } = request.user;
-    const {
-      from, to, page,
-    } = request.query;
+    const { from, to, page } = request.query;
 
     if (!from || !to || !page || page < 1) {
       return response.status(400).send('invalid query');
@@ -16,7 +14,7 @@ export default async (request, response) => {
       return response.status(400).send('invalid range of date');
     }
 
-    const { code, data } = await contents.list({ id, ...request.query });
+    const { code, data } = await images.list({ id, ...request.query });
 
     if (!code || !data) {
       return response.status(500).send('internal server error');
