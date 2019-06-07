@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "calenduck api",
-    "description": "calenduck api documentation",
+    "title": "Calendeok api",
+    "description": "calendeok api documentation",
     "version": "1.0.0"
   },
   "host": "localhost:5000",
@@ -1049,6 +1049,72 @@
           "400": {
             "schema": {
               "type": "string"
+            }
+          },
+          "500": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions": {
+      "get": {
+        "tags": [
+          "Subscriptions"
+        ],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "refresh",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "lang",
+          "in": "query",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "in": "query",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "ko": {
+                    "type": "string"
+                  },
+                  "en": {
+                    "type": "string"
+                  },
+                  "createdAt": {
+                    "type": "string"
+                  },
+                  "updatedAt": {
+                    "type": "string"
+                  },
+                  "deletedAt": {
+                    "type": "string"
+                  }
+                }
+              }
             }
           },
           "500": {

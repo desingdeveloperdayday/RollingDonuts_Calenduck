@@ -15,7 +15,7 @@ services:
       - api
 
   api:
-    image: calenduck-api
+    image: calendeok-api
     build: .
     restart: always
     env_file:
@@ -31,4 +31,4 @@ services:
     env_file:
       - .env
     volumes:
-      - ~/database/calenduck:/var/lib/mysql
+      - ~/database/calendeok:/var/lib/mysql

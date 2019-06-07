@@ -1,11 +1,11 @@
 {
-  "name": "calenduck-api",
+  "name": "calendeok-api",
   "version": "1.0.0",
-  "description": "calenduck rest api",
+  "description": "calendeok rest api",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kyhsa93/calenduck-api.git"
+    "url": "git+https://github.com/kyhsa93/calendeok-api.git"
   },
   "keywords": [
     "node.js",
@@ -15,9 +15,9 @@
   "author": "kyhs9a3",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kyhsa93/calenduck-api/issues"
+    "url": "https://github.com/kyhsa93/calendeok-api/issues"
   },
-  "homepage": "https://github.com/kyhsa93/calenduck-api#readme",
+  "homepage": "https://github.com/kyhsa93/calendeok-api#readme",
   "dependencies": {
     "aws-sdk": "^2.444.0",
     "compression": "^1.7.4",

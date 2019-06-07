@@ -6,7 +6,7 @@ export default {
     production: production ? true : false,
   },
   database: {
-    name: process.env.DATABASE_NAME || 'calenduck',
+    name: process.env.DATABASE_NAME || 'calendeok',
     user: process.env.DATABASE_USER || 'root',
     password: process.env.DATABASE_PASSWORD || 'test',
     host: process.env.DATABASE_HOST || 'localhost',

@@ -1,6 +1,6 @@
-# calenduck api
+# Calendeok api
 
-This is rest api for service that named "calenduck".
+This is rest api for service that named "calendeok".
 
 This service is made by team named rolling donuts in DDD. 
 
@@ -30,7 +30,7 @@ Please install node.js and I recommend to use docker for your database.
 First, clone this repository into your local environment. Run followed command in your terminal.
 
 ```bash
-  git clone https://github.com/kyhsa93/calenduck-api
+  git clone https://github.com/kyhsa93/calendeok-api
 ```
 
 Second, intall package that needed in this project.
@@ -78,14 +78,14 @@ If you can use docker cli, you can build docker image.
 Run followed command in project directory.
 
 ```bash
-  docker build -t calenduck-api . # build docker image
+  docker build -t calendeok-api . # build docker image
   docker images # list up docker images
 ```
 
 And than you can create and run docker container using builded image.
 
 ```bash
-  docker run -d -p 5000:5000 calenduck-api # create and run container in background
+  docker run -d -p 5000:5000 calendeok-api # create and run container in background
   docker ps # list up runnig container
 ```
 
@@ -121,7 +121,7 @@ Default database user is root and password is test.
 
 All configuration of this project is written config.js that locations in project root path.
 
-[https://github.com/kyhsa93/calenduck-api/blob/master/config.js](https://github.com/kyhsa93/calenduck-api/blob/master/config.js)
+[https://github.com/kyhsa93/calendeok-api/blob/master/config.js](https://github.com/kyhsa93/calendeok-api/blob/master/config.js)
 
 You can modify this file for change some config or add environment value when building docker image.
 

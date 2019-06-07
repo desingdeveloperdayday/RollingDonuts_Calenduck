@@ -1,7 +1,9 @@
 import awsSdk from 'aws-sdk';
 import uuid from 'uuid/v4';
 import fs from 'fs';
-import { Users, Contents, Images, sequelize } from '../../models';
+import {
+  Users, Contents, Images, sequelize,
+} from '../../models';
 
 const { aws } = require('../../config').default;
 
@@ -10,7 +12,7 @@ export default async (params) => {
     id, title, text, categoryId, files,
   } = params;
 
-  const user = await Users.findOne({ where: { id } });
+  const { subscriptionId } = await Users.findOne({ where: { id } });
 
   const result = await sequelize.transaction(async (transaction) => {
     const content = await Contents.create({
@@ -19,7 +21,7 @@ export default async (params) => {
       categoryId,
       createdAt: new Date(),
       userId: id,
-      subscriptionId: user.subscriptionId,
+      subscriptionId,
     }, { transaction });
 
     if (!content) return false;
