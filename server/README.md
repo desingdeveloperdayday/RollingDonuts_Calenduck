@@ -56,7 +56,7 @@ And run followed command.
 If your docker is successfully installed, you can use docker cli.
 
 ```bash
-  docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=test mysql:5.7
+  docker run --name calendeok -d -p 3306:3306 -e MYSQL_DATABASE=calendeok -e MYSQL_ROOT_PASSWORD=test -v ~/database/calendeok:/var/lib/mysql mysql:5.7
 ```
 
 And then, you can connect mysql in localhost:3306, user name 'root' and password is 'test'.

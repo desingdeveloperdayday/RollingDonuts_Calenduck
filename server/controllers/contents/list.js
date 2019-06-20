@@ -16,7 +16,7 @@ export default async (params) => {
       categoryId: categoryId || true,
       subscriptionId,
     },
-    include: [{ models: Images, where: { deletedAt: null } }],
+    include: ['images'],
     offset: (page - 1) * 10,
     limit: page * 10,
   };

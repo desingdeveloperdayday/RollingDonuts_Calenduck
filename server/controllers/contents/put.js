@@ -16,7 +16,7 @@ export default async (params) => {
 
   const oldContent = await Contents.findOne({
     where: { id, userId, deletedAt: null },
-    include: [{ model: Images, where: { deletedAt: null } }],
+    include: ['images'],
   });
 
   if (!oldContent) return { code: 404, data: 'not found' };
